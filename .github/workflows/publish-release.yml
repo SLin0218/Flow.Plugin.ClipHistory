@@ -1,0 +1,41 @@
+name: "Publish Release"
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    name: Build and Release
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build and Publish Plugin
+        run: |
+          dotnet publish Flow.Plugin.ClipHistory.csproj -c Release -o ./publish
+          if (Test-Path "./publish/runtimes/win-x64/native/e_sqlite3.dll") {
+              Copy-Item "./publish/runtimes/win-x64/native/e_sqlite3.dll" -Destination "./publish/" -Force
+          }
+
+      - name: Create Plugin Archive (Zip)
+        run: |
+          Compress-Archive -Path ./publish/* -DestinationPath ./Flow.Plugin.ClipHistory.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./Flow.Plugin.ClipHistory.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

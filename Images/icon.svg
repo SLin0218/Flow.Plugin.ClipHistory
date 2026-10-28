@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Invisible boundary rectangle to ensure full 128x128 bounds for Flow Launcher SharpVectors loader -->
+  <rect x="0" y="0" width="128" height="128" fill="#000000" opacity="0" />
+
+  <defs>
+    <!-- Background Board Gradient: Fluent Blue to Cyan -->
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#00C0FF"/>
+    </linearGradient>
+
+    <!-- Clip Gradient: Polished Metallic / Warm Gold -->
+    <linearGradient id="clipGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDE59"/>
+      <stop offset="100%" stop-color="#FF9900"/>
+    </linearGradient>
+
+    <!-- Paper Sheet Gradient -->
+    <linearGradient id="paperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0F5FA"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(64, 64) scale(0.90) translate(-64, -62)">
+    <!-- 1. Main Clipboard Body -->
+    <rect x="18" y="14" width="92" height="102" rx="16" fill="url(#boardGrad)"/>
+
+    <!-- 2. Paper Sheet Shadow & Paper Sheet (Vector shadow for 100% SharpVectors compatibility) -->
+    <rect x="28" y="31" width="72" height="80" rx="8" fill="#002050" opacity="0.2"/>
+    <rect x="28" y="28" width="72" height="80" rx="8" fill="url(#paperGrad)"/>
+
+    <!-- 3. Top Metal Clip -->
+    <rect x="44" y="8" width="40" height="20" rx="6" fill="url(#clipGrad)"/>
+    <rect x="52" y="14" width="24" height="6" rx="3" fill="#D47A00" opacity="0.35"/>
+
+    <!-- 4. Clipboard Text Lines -->
+    <rect x="36" y="42" width="36" height="5" rx="2.5" fill="#2B579A" opacity="0.75"/>
+    <rect x="36" y="53" width="48" height="5" rx="2.5" fill="#5078A8" opacity="0.5"/>
+    <rect x="36" y="64" width="26" height="5" rx="2.5" fill="#5078A8" opacity="0.5"/>
+
+    <!-- 5. History / Clock Badge (Accent Circular Symbol) -->
+    <g transform="translate(64, 68)">
+      <!-- Badge Background Circle -->
+      <circle cx="24" cy="24" r="22" fill="#0066FF"/>
+      <circle cx="24" cy="24" r="20" fill="#0080FF"/>
+
+      <!-- Clock Arc / Arrow -->
+      <path d="M 24 10 A 14 14 0 1 1 12 18" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="10,12 17,17 10,21" fill="#FFFFFF"/>
+
+      <!-- Clock Hands -->
+      <line x1="24" y1="24" x2="24" y2="16" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      <line x1="24" y1="24" x2="30" y2="24" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="24" cy="24" r="2" fill="#FFFFFF"/>
+    </g>
+  </g>
+</svg>

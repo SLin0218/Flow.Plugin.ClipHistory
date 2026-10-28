@@ -1,0 +1,43 @@
+<UserControl x:Class="Flow.Plugin.ClipHistory.Views.ImagePreviewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="360"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 主图片容器：左右严格对称边距 6px，顶部 8px，彻底对齐左右间距 -->
+        <Border Grid.Row="0"
+                Margin="6,8,6,2"
+                CornerRadius="8"
+                ClipToBounds="True"
+                Background="#0DFFFFFF"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                MouseLeftButtonDown="OnImageMouseLeftButtonDown">
+            <Image x:Name="ImgPreview"
+                   Stretch="Uniform"
+                   StretchDirection="Both"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   RenderOptions.BitmapScalingMode="HighQuality" />
+        </Border>
+
+        <!-- 底部单行精简信息（分辨率 · 大小 · 时间） -->
+        <TextBlock Grid.Row="1"
+                   x:Name="TxtInfo"
+                   Foreground="#888888"
+                   FontSize="11"
+                   FontFamily="Segoe UI, Microsoft YaHei"
+                   HorizontalAlignment="Center"
+                   Margin="6,4,6,2"
+                   TextTrimming="CharacterEllipsis" />
+    </Grid>
+</UserControl>
